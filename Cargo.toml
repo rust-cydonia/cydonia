@@ -1,9 +1,9 @@
 [package]
-name = "orbit_test"
-version = "0.0.1"
+name = "cydonia-orbits"
+version = "0.0.2"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-glam = "0.24.1"
+vsop87 = "2.1.0"

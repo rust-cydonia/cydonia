@@ -158,9 +158,21 @@ fn mars_orbit(d: f64) -> Orbit {
     }
 }
 
+fn calc_jupiter_mean_anomaly(d: f64) -> f64 {
+    (19.8950 + 0.0830853001 * d) % 360.0
+}
+
+fn calc_saturn_mean_anomaly(d: f64) -> f64 {
+    (316.9670 + 0.0334442282 * d) % 360.0
+}
+
+fn calc_uranus_mean_anomaly(d: f64) -> f64 {
+    (142.5905 + 0.011725806 * d) % 360.0
+}
+
 fn jupiter_orbit(d: f64) -> Orbit {
-    let jupiter_mean_anomaly = (19.8950 + 0.0830853001 * d) % 360.0;
-    let saturn_mean_anomaly = (316.9670 + 0.0334442282 * d) % 360.0;
+    let jupiter_mean_anomaly = calc_jupiter_mean_anomaly(d);
+    let saturn_mean_anomaly = calc_saturn_mean_anomaly(d);
     Orbit {
         asc_node: 100.4542 + 2.76854e-5 * d,
         inc: 1.3030 - 1.557e-7 * d,
@@ -200,8 +212,8 @@ fn jupiter_orbit(d: f64) -> Orbit {
 }
 
 fn saturn_orbit(d: f64) -> Orbit {
-    let saturn_mean_anomaly = (316.9670 + 0.0334442282 * d) % 360.0;
-    let jupiter_mean_anomaly = (19.8950 + 0.0830853001 * d) % 360.0;
+    let saturn_mean_anomaly = calc_saturn_mean_anomaly(d);
+    let jupiter_mean_anomaly = calc_jupiter_mean_anomaly(d);
     Orbit {
         asc_node: 113.6634 + 2.38980e-5 * d,
         inc: 2.4886 - 1.081e-7 * d,
@@ -245,9 +257,9 @@ fn saturn_orbit(d: f64) -> Orbit {
 }
 
 fn uranus_orbit(d: f64) -> Orbit {
-    let uranus_mean_anomaly = (142.5905 + 0.011725806 * d) % 360.0;
-    let jupiter_mean_anomaly = (19.8950 + 0.0830853001 * d) % 360.0;
-    let saturn_mean_anomaly = (316.9670 + 0.0334442282 * d) % 360.0;
+    let uranus_mean_anomaly = calc_uranus_mean_anomaly(d);
+    let jupiter_mean_anomaly = calc_jupiter_mean_anomaly(d);
+    let saturn_mean_anomaly = calc_saturn_mean_anomaly(d);
     Orbit {
         asc_node: 74.0005 + 1.3978e-5 * d,
         inc: 0.7733 + 1.9e-8 * d,

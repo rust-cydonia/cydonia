@@ -1,5 +1,5 @@
 [package]
-name = "cydonia-orbits"
+name = "cydonia"
 version = "0.0.2"
 edition = "2021"
 

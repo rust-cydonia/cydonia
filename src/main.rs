@@ -28,7 +28,7 @@ fn main() -> Result<()> {
         orbit: orbit::VSOP87_EARTH,
     };
 
-    #[rustfmt::skip] // rustfmt wants to make this one line; ignore for consistency
+    #[rustfmt::skip] // rustfmt wants to make this one line; skip for consistency
     let mars = Planet {
         orbit: orbit::VSOP87_MARS,
     };

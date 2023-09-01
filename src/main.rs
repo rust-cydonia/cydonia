@@ -1,15 +1,20 @@
 mod planet;
 
+use anyhow::Result;
 use planet::{orbit, Planet};
 use std::time::UNIX_EPOCH;
 
-fn current_jd() -> f64 {
-    let t = UNIX_EPOCH.elapsed().unwrap().as_nanos() as i128;
-    t as f64 / (86400.0 * 1000000000.0) + 2440587.5
+fn jd_from_unix(unix: f64) -> Result<f64> {
+    Ok(unix / (86400.0 * 1000000000.0) + 2440587.5)
 }
 
-fn main() {
-    let jd = current_jd();
+fn current_jd() -> Result<f64> {
+    let unix = i128::try_from(UNIX_EPOCH.elapsed()?.as_nanos())?;
+    jd_from_unix(unix as f64)
+}
+
+fn main() -> Result<()> {
+    let jd = current_jd()?;
 
     let mercury = Planet {
         orbit: orbit::VSOP87_MERCURY,
@@ -52,4 +57,6 @@ fn main() {
     println!("{:?}", (saturn.orbit.position)(jd));
     println!("{:?}", (uranus.orbit.position)(jd));
     println!("{:?}", (neptune.orbit.position)(jd));
+
+    Ok(())
 }

@@ -17,46 +17,45 @@ fn main() -> Result<()> {
     let jd = current_jd()?;
 
     let mercury = Planet {
-        orbit: orbit::VSOP87_MERCURY,
+        orbit: Box::new(orbit::VSOP87_MERCURY),
     };
 
     let venus = Planet {
-        orbit: orbit::VSOP87_VENUS,
+        orbit: Box::new(orbit::VSOP87_VENUS),
     };
 
     let earth = Planet {
-        orbit: orbit::VSOP87_EARTH,
+        orbit: Box::new(orbit::VSOP87_EARTH),
     };
 
-    #[rustfmt::skip] // rustfmt wants to make this one line; ignore for consistency
     let mars = Planet {
-        orbit: orbit::VSOP87_MARS,
+        orbit: Box::new(orbit::VSOP87_MARS),
     };
 
     let jupiter = Planet {
-        orbit: orbit::VSOP87_JUPITER,
+        orbit: Box::new(orbit::VSOP87_JUPITER),
     };
 
     let saturn = Planet {
-        orbit: orbit::VSOP87_SATURN,
+        orbit: Box::new(orbit::VSOP87_SATURN),
     };
 
     let uranus = Planet {
-        orbit: orbit::VSOP87_URANUS,
+        orbit: Box::new(orbit::VSOP87_URANUS),
     };
 
     let neptune = Planet {
-        orbit: orbit::VSOP87_NEPTUNE,
+        orbit: Box::new(orbit::VSOP87_NEPTUNE),
     };
 
-    println!("{:?}", (mercury.orbit.position)(jd));
-    println!("{:?}", (venus.orbit.position)(jd));
-    println!("{:?}", (earth.orbit.position)(jd));
-    println!("{:?}", (mars.orbit.position)(jd));
-    println!("{:?}", (jupiter.orbit.position)(jd));
-    println!("{:?}", (saturn.orbit.position)(jd));
-    println!("{:?}", (uranus.orbit.position)(jd));
-    println!("{:?}", (neptune.orbit.position)(jd));
+    println!("{:?}", mercury.orbit.position(jd));
+    println!("{:?}", venus.orbit.position(jd));
+    println!("{:?}", earth.orbit.position(jd));
+    println!("{:?}", mars.orbit.position(jd));
+    println!("{:?}", jupiter.orbit.position(jd));
+    println!("{:?}", saturn.orbit.position(jd));
+    println!("{:?}", uranus.orbit.position(jd));
+    println!("{:?}", neptune.orbit.position(jd));
 
     Ok(())
 }

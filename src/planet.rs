@@ -1,7 +1,7 @@
 pub(crate) mod orbit;
 
-pub(crate) use orbit::Orbit;
+pub(crate) use orbit::HasOrbit;
 
 pub(crate) struct Planet {
-    pub orbit: Orbit,
+    pub orbit: Box<dyn HasOrbit>,
 }
